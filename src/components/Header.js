@@ -8,29 +8,32 @@ const Header = () => {
     const onlineStatus = useOnlineStatus();
 
     return (
-        <div className="header">
+        <div className="flex items-center justify-between shadow-xl h-20 text-white bg-black">
             <div className="logo-container">
-                <img className="logo" src={Logo} alt="" />
+                <img className="w-56 p-3 m-2" src={Logo} alt="" />
             </div>
-            <div className="nav-items">
-                <ul>
-                    <li>
+            <div className="">
+                <ul className='flex p-3 m-4'>
+                    <li className='px-4'>
                         <Link to='/'>Home</Link>
                     </li>
-                    <li>
-                        <Link to='/about'>About Us</Link>
+                    <li className='px-4'>
+                        <Link to='/about' className=''>About Us</Link>
                     </li>
-                    <li>
+                    <li className='px-4'>
                         <Link to='/contact'>Contact Us</Link>
                     </li>
-                    <li>
+                    <li className='px-4'>
                         <Link to='/grocery'>Grocery</Link>
                     </li>
-                    <li>
+                    <li className='px-4'>
                         <Link to='/cart'>Cart</Link>
                     </li>
-                    <li>
+                    <li className='px-4'>
                         Online Status: {onlineStatus ? '🟢' : '🔴'}
+                    </li>
+                    <li className='px-4'>
+                        <button>Login</button>
                     </li>
                 </ul>
             </div>
