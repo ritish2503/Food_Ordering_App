@@ -20,6 +20,7 @@ const useFetchAPIData = () => {
                 throw new Error('Network response was not ok.')
             }
             const result = await response.json();
+            console.log('Fetch : ', result.data.cards)
             setList(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         }catch(error){
             console.log(error);

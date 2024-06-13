@@ -22,6 +22,7 @@ const useRestaurantMenu = (restaurantId) => {
         // console.log('Hello :',result?.data?.cards[2]?.card?.card?.info);
         // console.log('Hi : ',result?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card);
         // console.log('New :', result.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[0])
+        console.log('Res Data :', result?.data);
         setResInfo(result?.data);
 
     }

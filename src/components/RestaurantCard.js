@@ -17,4 +17,18 @@ const RestaurantCard = ({ resData }) => {
     )
 }
 
+//Higher Order Component - That labels 'Recommended' to the restaurants having rating more than 4.3
+export const withRecommendedLevel = (RestaurantCard) => {
+    //Will return a new component
+    return ({resData}) => {
+        //Render part of enhanced component
+        return (
+            <div>
+                <label className='mx-4 p-1 absolute bg-black text-white rounded-lg'>Recommended</label>
+                <RestaurantCard resData={resData} />
+            </div>
+        )
+    }
+}
+
 export default RestaurantCard;

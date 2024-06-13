@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard, { withRecommendedLevel } from './RestaurantCard';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
@@ -15,6 +15,8 @@ const Body = () => {
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [theme, setTheme] = useState('bg-white');
+
+    const RestaurantCardRecommended = withRecommendedLevel(RestaurantCard);
 
     //Whenever state variable updates, react triggers a re-conciliation cycle.
     //console.log("Body rendered : " ,searchText);
@@ -32,7 +34,7 @@ const Body = () => {
         
     }
 
-    // console.log('Filtered :',filteredRestaurant)
+    console.log('Filtered :',filteredRestaurant)
     const searchRestaurant = () => {
         if(searchText.length > 0){
             const filteredRes = restaurantsList.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -89,7 +91,10 @@ const Body = () => {
             <div className="flex flex-wrap justify-evenly">
                 {
                     filteredRestaurant.map((restaurant) => (
-                        <Link to={'/restaurants/' + restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
+                        <Link to={'/restaurants/' + restaurant.info.id} key={restaurant.info.id}>
+                            {restaurant.info.avgRating > 4.3 ? <RestaurantCardRecommended resData={restaurant} /> : <RestaurantCard resData={restaurant} />}
+                            
+                        </Link>
                     ))
                 }
             </div>
