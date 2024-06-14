@@ -10,7 +10,6 @@ import RestaurantMenuInfo from "./components/RestaurantMenuInfo";
 import UserContext from "./utils/UserContext";
 //Lazy Loading - Dynamic Import
 const Grocery = lazy(() => import('./components/Grocery'));
-// import UserContext from "./utils/UserContext";
 
 
 const App = () => {
