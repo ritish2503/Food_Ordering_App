@@ -1,11 +1,21 @@
 import React from 'react';
 import { CDN_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
 const CategoryItems = ({item}) => {
     // console.log('items :',item);
 
   const {name,description, itemAttribute, imageId, price, defaultPrice, ratings} = item.card.info;
   // console.log(itemAttribute.vegClassifier);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+      //Dispatch an action to reducer to add item
+      dispatch(addItem(item));
+  }
+
   return (
     <div className='flex justify-between my-4 border-b-2 border-gray-400'>
       <div className='w-9/12'>
@@ -16,7 +26,10 @@ const CategoryItems = ({item}) => {
       </div>
       <div className='w-3/12'>
         <div className='absolute'>
-          <button className='w-24 h-8 text-green-600 font-bold bg-white z-10 ml-11 rounded-2xl shadow-lg mt-[136px]'>ADD</button>
+          <button onClick={() => handleAddItem(item)}
+            className='w-24 h-8 text-green-600 font-bold bg-white z-10 ml-11 rounded-2xl shadow-lg mt-[136px]'>
+            ADD
+          </button>
         </div>
         <img src={CDN_URL + imageId} alt="food-image" className='p-8' />
       </div>

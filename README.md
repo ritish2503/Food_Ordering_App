@@ -17,3 +17,12 @@
     * Links
     * Address
     * Contact
+
+
+# Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to app
+- Create slice(cartSlice)
+- dispatch(action)
+- Selector

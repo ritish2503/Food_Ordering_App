@@ -10,6 +10,9 @@ import RestaurantMenuInfo from "./components/RestaurantMenuInfo";
 import UserContext from "./utils/UserContext";
 //Lazy Loading - Dynamic Import
 const Grocery = lazy(() => import('./components/Grocery'));
+import { Provider } from "react-redux";
+import appStore from './utils/appStore';
+import Cart from "./components/Cart";
 
 
 const App = () => {
@@ -24,12 +27,14 @@ const App = () => {
     },[]);
 
     return (
-        <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-            <div>
-                <Header />
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+                <div>
+                    <Header />
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        </Provider>
 
     )
 }
@@ -60,6 +65,10 @@ const appRouter = createBrowserRouter([
                 path: '/restaurants/:restaurantId',
                 element: <RestaurantMenuInfo />
             },
+            {
+                path: '/cart',
+                element: <Cart />
+            }
         ],
         errorElement: <Error />
     },

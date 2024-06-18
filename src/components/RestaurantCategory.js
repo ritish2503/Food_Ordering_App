@@ -4,8 +4,6 @@ import { useState } from 'react';
 
 const RestaurantCategory = ({foodData, expand, changeIndexValue}) => {
 
-  // const [expand, setExpand] = useState(false)
-
   const toggleExpand = () => {
     changeIndexValue();
   }
